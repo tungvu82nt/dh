@@ -161,7 +161,7 @@ const SettingsBackup: React.FC<SettingsBackupProps> = ({
           });
           alert(getTranslation(language, 'restoreSuccess'));
         }
-      } catch (error) {
+      } catch {
         alert(getTranslation(language, 'invalidFile'));
       }
     };

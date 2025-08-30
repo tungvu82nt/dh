@@ -1,1 +1,110 @@
-[33mc85013b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m Initial commit: PackSheet Lite - Professional shipping form application
+[33mcommit 2616025c8c5c218a550a0cbc8f95bec3363b1824[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: PackSheet Developer <packsheet.dev@example.com>
+Date:   Sat Aug 30 18:08:09 2025 +0700
+
+    📄 Add MIT License
+    
+    - Add MIT License file for open source distribution
+    - Copyright 2024 PackSheet Lite
+    - Allows free use, modification, and distribution
+    - Includes standard MIT license terms and conditions
+
+ LICENSE | 21 [32m+++++++++++++++++++++[m
+ 1 file changed, 21 insertions(+)
+
+[33mcommit 4602c7d2c632d78e5284edb9fff05745d88c8ab9[m
+Author: PackSheet Developer <packsheet.dev@example.com>
+Date:   Sat Aug 30 18:05:50 2025 +0700
+
+    🚀 PackSheet Lite v1.0.1 - Professional Shipping Form Application
+    
+    ✨ FEATURES IMPLEMENTED:
+    ✅ Complete React + TypeScript application
+    ✅ Multi-language support (Vietnamese & Chinese) - 95+ translation keys
+    ✅ Professional shipping form creation with live preview
+    ✅ PDF export using jsPDF & html2canvas
+    ✅ Excel export using xlsx library
+    ✅ Form history management with local storage
+    ✅ Data backup & restore functionality
+    ✅ Responsive design optimized for mobile/tablet/desktop
+    ✅ Clean UI with TailwindCSS and Lucide React icons
+    ✅ Offline-first architecture (no server required)
+    
+    🛠️ TECHNICAL STACK:
+    • Frontend: React 18.3.1 + TypeScript 5.5.3
+    • Build: Vite 5.4.8 (fast development & optimized production)
+    • Styling: TailwindCSS 3.4.10 + responsive design
+    • Icons: Lucide React 0.451.0
+    • PDF: jsPDF 2.5.1 + html2canvas 1.4.1
+    • Excel: xlsx 0.18.5
+    • Storage: Browser localStorage API
+    
+    🌐 MULTI-LANGUAGE SUPPORT:
+    • Vietnamese (vi): Complete translation system
+    • Chinese (zh): Complete translation system
+    • 95+ translation keys covering all UI elements
+    • Clean translation architecture with getTranslation function
+    • No duplicate keys - optimized for performance
+    
+    📱 RESPONSIVE DESIGN:
+    • Mobile-first approach (320px+)
+    • Tablet optimization (768px-1023px)
+    • Desktop full feature set (1024px+)
+    • Touch-friendly interface on mobile devices
+    
+    🔧 DEVELOPMENT FEATURES:
+    • Hot reload development with Vite
+    • TypeScript for type safety
+    • ESLint for code quality
+    • Clean component architecture
+    • Custom hooks (useLocalStorage, useLanguage)
+    • Professional folder structure
+    
+    📊 PROJECT METRICS:
+    • Bundle size: ~464KB (gzipped: ~153KB)
+    • Build time: ~10 seconds
+    • Components: 6 React components
+    • Translation keys: 95+ in each language
+    • Dependencies: 28 npm packages
+    
+    🎯 READY FOR DEPLOYMENT:
+    • Production build optimized
+    • GitHub repository ready
+    • Documentation complete
+    • Open source ready with MIT license
+    • Deployable to Netlify/Vercel/GitHub Pages
+    
+    Version: 1.0.1
+    Release Date: October 2024
+    Author: Sản phẩm Đổi mới Studio
+
+ .bolt/config.json                   |    3 [32m+[m
+ .bolt/prompt                        |    5 [32m+[m
+ .gitignore                          |   99 [32m+[m
+ README.md                           |  362 [32m+++[m
+ eslint.config.js                    |   28 [32m+[m
+ index.html                          |   13 [32m+[m
+ package-lock.json                   | 4368 [32m+++++++++++++++++++++++++++++++++++[m
+ package.json                        |   36 [32m+[m
+ postcss.config.js                   |    6 [32m+[m
+ src/App.tsx                         |  117 [32m+[m
+ src/components/FormsHistory.tsx     |   94 [32m+[m
+ src/components/LanguageSwitcher.tsx |   26 [32m+[m
+ src/components/Navigation.tsx       |   58 [32m+[m
+ src/components/NewForm.tsx          |  309 [32m+++[m
+ src/components/SettingsBackup.tsx   |  312 [32m+++[m
+ src/components/WelcomeModal.tsx     |   67 [32m+[m
+ src/hooks/useLanguage.ts            |   16 [32m+[m
+ src/hooks/useLocalStorage.ts        |   25 [32m+[m
+ src/index.css                       |    3 [32m+[m
+ src/main.tsx                        |   10 [32m+[m
+ src/types/index.ts                  |   30 [32m+[m
+ src/utils/translations.ts           |  274 [32m+++[m
+ src/vite-env.d.ts                   |    1 [32m+[m
+ tailwind.config.js                  |    8 [32m+[m
+ tatus                               |    1 [32m+[m
+ tsconfig.app.json                   |   24 [32m+[m
+ tsconfig.json                       |    7 [32m+[m
+ tsconfig.node.json                  |   22 [32m+[m
+ vite.config.ts                      |   10 [32m+[m
+ 29 files changed, 6334 insertions(+)

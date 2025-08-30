@@ -43,7 +43,7 @@ const FormsHistory: React.FC<FormsHistoryProps> = ({ forms, onFormsChange, langu
                 </tr>
               </thead>
               <tbody>
-                {forms.map((form, index) => (
+                {forms.map((form) => (
                   <tr key={form.id} className="hover:bg-gray-50 transition-colors relative group">
                     <td className="border border-black p-3 text-center text-sm font-mono">
                       {form.id.toString().slice(-6)}
@@ -58,7 +58,7 @@ const FormsHistory: React.FC<FormsHistoryProps> = ({ forms, onFormsChange, langu
                       {form.totalQuantity}
                     </td>
                     <td className="border border-black p-3 text-center text-sm">
-                      {form.items.map((item, idx) => (
+                      {form.items.map((item) => (
                         <div key={item.id} className="text-xs mb-1 text-center">
                           {item.name}: {item.quantity} x {item.weight} kilogram = {(item.quantity * item.weight).toFixed(2)} kilogram
                         </div>

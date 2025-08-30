@@ -47,6 +47,12 @@ Một ứng dụng web miễn phí, gọn nhẹ, giúp tạo phiếu gửi hàng
 
 ---
 
+## 🚀 Trạng thái Deployment
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_SITE_ID/deploy-status)](https://app.netlify.com/sites/YOUR_SITE_NAME/deploys)
+
+*Badge này hiển thị trạng thái deployment real-time của dự án*
+
 ## 🛠️ Công nghệ sử dụng
 
 **Frontend Framework:**
@@ -111,10 +117,49 @@ Files được build sẽ nằm trong thư mục `dist/` và có thể deploy l�
 
 ## ☁️ Triển khai (Deploy)
 
-### Option 1: Netlify (Khuyên dùng)
+### Option 1: Netlify (Khuyên dùng) 🚀
 1. Push code lên GitHub
-2. Kết nối GitHub với Netlify  
-3. Deploy tự động từ main branch
+2. Kết nối GitHub với Netlify
+3. **Quan trọng**: Cấu hình build settings:
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+   - **Node version**: 18
+4. Deploy tự động từ main branch
+
+#### 🔧 Fix lỗi MIME type trên Netlify:
+Đã được cấu hình sẵn với:
+- File `netlify.toml` cho cấu hình build
+- File `_redirects` trong thư mục `public/`
+- Vite config được tối ưu cho deployment
+- Headers MIME type configuration
+
+##### 🚨 Nếu vẫn gặp lỗi MIME type:
+
+**Bước 1: Kiểm tra Netlify Build Settings**
+```
+Build command: npm run build
+Publish directory: dist
+Node version: 18
+```
+
+**Bước 2: Clear cache và rebuild**
+- Vào Netlify Dashboard
+- Site Settings > Build & Deploy
+- Click "Clear cache and deploy site"
+
+**Bước 3: Thay đổi build command (nếu cần)**
+```
+npm install && npm run build
+```
+
+**Bước 4: Alternative - Sử dụng .htaccess**
+```apache
+# Thêm vào dist/.htaccess
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+</IfModule>
+```
 
 ### Option 2: Vercel
 1. Import project từ GitHub
@@ -205,6 +250,29 @@ Nếu bạn cần chuyển dữ liệu sang máy tính/trình duyệt khác:
 3. Vào **"Cài Đặt & Sao Lưu"** 
 4. Chọn **"Phục Hồi Dữ Liệu"** và upload file .json
 5. Xác nhận ghi đè dữ liệu
+
+---
+
+## 🔧 Troubleshooting Deployment
+
+### Lỗi MIME type trên Netlify
+Nếu gặp lỗi: *"Failed to load module script: Expected a JavaScript module"*
+
+**Giải pháp:**
+1. Đảm bảo file `netlify.toml` có trong root directory
+2. File `_redirects` được copy vào thư mục `dist/` sau khi build
+3. Cấu hình Netlify build settings chính xác:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+
+### Lỗi 404 khi refresh trang
+1. Kiểm tra file `_redirects` trong thư mục `dist/`
+2. Đảm bảo có dòng: `/*    /index.html   200`
+
+### Build failed
+1. Cập nhật Node.js version trong Netlify (18+)
+2. Chạy `npm install` trước khi build
+3. Kiểm tra dependencies trong `package.json`
 
 ---
 
@@ -359,5 +427,6 @@ Nếu PackSheet Lite giúp ích cho công việc của bạn, hãy:
 
 ---
 
-*📱 Ứng dụng hoạt động 100% offline - Dữ liệu của bạn, quyền kiểm soát của bạn!*#   d h  
+*📱 Ứng dụng hoạt động 100% offline - Dữ liệu của bạn, quyền kiểm soát của bạn!*#   d h 
+ 
  
