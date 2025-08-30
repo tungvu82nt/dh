@@ -359,4 +359,5 @@ Nếu PackSheet Lite giúp ích cho công việc của bạn, hãy:
 
 ---
 
-*📱 Ứng dụng hoạt động 100% offline - Dữ liệu của bạn, quyền kiểm soát của bạn!*
+*📱 Ứng dụng hoạt động 100% offline - Dữ liệu của bạn, quyền kiểm soát của bạn!*#   d h  
+ 
