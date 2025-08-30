@@ -67,10 +67,16 @@ Dự án đã được tích hợp với **Supabase** để thay thế localStor
 
 #### Bước 1: Tạo Database Schema
 1. Truy cập [Supabase Dashboard](https://supabase.com/dashboard)
-2. Chọn project của bạn
-3. Vào **SQL Editor**
-4. Copy và paste nội dung file `supabase-schema.sql`
-5. Click **Run** để tạo tables và policies
+2. Chọn project của bạn: `lnqvjmdffzlxzavfxmek`
+3. Vào **SQL Editor** (tab bên trái)
+4. Copy và paste nội dung file `supabase-schema-simple.sql`
+5. Click **Run** để tạo tables
+6. Đợi thông báo "Success" xuất hiện
+
+#### Bước 2: Kiểm tra Tables
+Sau khi tạo schema, bạn sẽ thấy 2 tables:
+- ✅ `shipping_forms` - Lưu trữ đơn hàng
+- ✅ `user_settings` - Lưu trữ cài đặt người dùng
 
 #### Bước 2: Cấu hình Environment
 File `src/utils/supabase.ts` đã được cấu hình với:
@@ -78,12 +84,29 @@ File `src/utils/supabase.ts` đã được cấu hình với:
 - ✅ API Key: Đã được tích hợp
 - ✅ Database types: Đầy đủ TypeScript support
 
-#### Bước 3: Features đã tích hợp
+#### Bước 3: Test Integration
+Sau khi tạo tables, chạy lệnh test:
+```bash
+# Test cơ bản
+node test-simple.js
+
+# Test đầy đủ
+node test-supabase.js
+```
+
+#### Bước 4: Chạy Ứng dụng
+```bash
+npm run dev
+```
+
+#### Bước 5: Features đã tích hợp
 - ✅ **Real-time data**: Sync dữ liệu real-time
 - ✅ **User management**: Hỗ trợ multi-user (tương lai)
 - ✅ **Data persistence**: Không mất dữ liệu khi refresh
 - ✅ **Offline support**: Fallback khi mất kết nối
 - ✅ **Security**: Row Level Security (RLS) policies
+- ✅ **Error handling**: Xử lý lỗi graceful
+- ✅ **Loading states**: UX tốt hơn
 
 ## 🚀 Deployment Guide
 
