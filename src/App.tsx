@@ -73,20 +73,41 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100 font-sans">
-      <Navigation 
-        currentView={currentView} 
-        onViewChange={setCurrentView}
-        language={language}
-        onLanguageChange={setLanguage}
-      />
-      
-      <main className="flex-1 p-8 overflow-y-auto">
-        {renderCurrentView()}
-      </main>
+    <div className="min-h-screen bg-gray-100 font-sans">
+      {/* Mobile: Full screen layout */}
+      <div className="lg:hidden">
+        <Navigation
+          currentView={currentView}
+          onViewChange={setCurrentView}
+          language={language}
+          onLanguageChange={setLanguage}
+        />
 
-      <WelcomeModal 
-        isOpen={showWelcome} 
+        <main className="pt-16 px-4 pb-8 overflow-y-auto min-h-screen">
+          <div className="max-w-full mx-auto">
+            {renderCurrentView()}
+          </div>
+        </main>
+      </div>
+
+      {/* Desktop: Sidebar layout */}
+      <div className="hidden lg:flex lg:h-screen">
+        <Navigation
+          currentView={currentView}
+          onViewChange={setCurrentView}
+          language={language}
+          onLanguageChange={setLanguage}
+        />
+
+        <main className="flex-1 p-4 lg:p-8 overflow-y-auto">
+          <div className="max-w-7xl mx-auto">
+            {renderCurrentView()}
+          </div>
+        </main>
+      </div>
+
+      <WelcomeModal
+        isOpen={showWelcome}
         onClose={() => setShowWelcome(false)}
         language={language}
       />
@@ -107,6 +128,20 @@ function App() {
           }
           .no-print {
             display: none !important;
+          }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 1024px) {
+          .mobile-optimized {
+            font-size: 14px;
+          }
+        }
+
+        /* Touch targets for mobile */
+        @media (max-width: 768px) {
+          button, input, select, textarea {
+            min-height: 44px;
           }
         }
       `}</style>

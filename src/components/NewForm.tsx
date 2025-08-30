@@ -86,12 +86,16 @@ const NewForm: React.FC<NewFormProps> = ({ onFormSave, language }) => {
   };
 
   return (
-    <div>
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">{getTranslation(language, 'newFormTitle')}</h2>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow-md space-y-6">
-          <h3 className="font-bold text-lg mb-4">{getTranslation(language, 'shippingInfo')}</h3>
+    <div className="mobile-optimized">
+      <h2 className="text-2xl lg:text-3xl font-bold mb-4 lg:mb-6 text-gray-800 px-2 lg:px-0">
+        {getTranslation(language, 'newFormTitle')}
+      </h2>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+        <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md space-y-4 lg:space-y-6">
+          <h3 className="font-bold text-base lg:text-lg mb-3 lg:mb-4">
+            {getTranslation(language, 'shippingInfo')}
+          </h3>
           
           {/* Customer Information */}
           <div className="space-y-4">
@@ -102,7 +106,7 @@ const NewForm: React.FC<NewFormProps> = ({ onFormSave, language }) => {
                 value={customerInfo.name}
                 onChange={(e) => setCustomerInfo({ ...customerInfo, name: e.target.value })}
                 placeholder={getTranslation(language, 'customerName')}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full p-3 lg:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
               />
             </div>
             
@@ -113,18 +117,18 @@ const NewForm: React.FC<NewFormProps> = ({ onFormSave, language }) => {
                 value={customerInfo.address}
                 onChange={(e) => setCustomerInfo({ ...customerInfo, address: e.target.value })}
                 placeholder={getTranslation(language, 'customerAddress')}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full p-3 lg:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
               />
             </div>
             
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">{getTranslation(language, 'phoneOptional')}</label>
               <input
-                type="text"
+                type="tel"
                 value={customerInfo.phone}
                 onChange={(e) => setCustomerInfo({ ...customerInfo, phone: e.target.value })}
                 placeholder={getTranslation(language, 'phoneOptional')}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full p-3 lg:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
               />
             </div>
           </div>
@@ -161,7 +165,7 @@ const NewForm: React.FC<NewFormProps> = ({ onFormSave, language }) => {
                       value={item.name}
                       onChange={(e) => updateFormItem(item.id, 'name', e.target.value)}
                       placeholder={getTranslation(language, 'productName')}
-                      className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                     />
                     
                     <div className="grid grid-cols-2 gap-2">
@@ -171,9 +175,9 @@ const NewForm: React.FC<NewFormProps> = ({ onFormSave, language }) => {
                         onChange={(e) => updateFormItem(item.id, 'quantity', parseInt(e.target.value) || 0)}
                         placeholder={getTranslation(language, 'quantity')}
                         min="1"
-                        className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                       />
-                      
+
                       <input
                         type="number"
                         value={item.weight}
@@ -181,7 +185,7 @@ const NewForm: React.FC<NewFormProps> = ({ onFormSave, language }) => {
                         placeholder={getTranslation(language, 'weight')}
                         step="any"
                         min="0"
-                        className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                       />
                     </div>
                   </div>
@@ -207,14 +211,14 @@ const NewForm: React.FC<NewFormProps> = ({ onFormSave, language }) => {
           </button>
         </div>
 
-        <div id="print-area" className="lg:col-span-2 bg-white p-6 rounded-lg shadow-md">
-          <div className="border-2 border-gray-800 p-8">
-            <h3 className="text-2xl font-bold text-center mb-6 text-gray-800 uppercase tracking-wide">
+        <div id="print-area" className="lg:col-span-2 bg-white p-4 lg:p-6 rounded-lg shadow-md">
+          <div className="border-2 border-gray-800 p-4 lg:p-8">
+            <h3 className="text-xl lg:text-2xl font-bold text-center mb-4 lg:mb-6 text-gray-800 uppercase tracking-wide">
               {getTranslation(language, 'deliveryForm')} / {getTranslation(language, 'deliveryFormEn')}
             </h3>
 
             {/* Thông tin khách hàng và ngày lập */}
-            <div className="grid grid-cols-2 gap-6 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mb-4 lg:mb-6">
               <div className="border-2 border-gray-400 p-4">
                 <h4 className="font-bold text-lg mb-3 text-gray-800 border-b border-gray-300 pb-2">{getTranslation(language, 'customerFullName')}</h4>
                 {customerInfo.name ? (
@@ -239,26 +243,45 @@ const NewForm: React.FC<NewFormProps> = ({ onFormSave, language }) => {
             </div>
 
             {/* Bảng sản phẩm */}
-            <div className="border-2 border-gray-400">
-              <h4 className="font-bold text-lg p-4 text-gray-800 border-b-2 border-gray-400 bg-gray-100">{getTranslation(language, 'productListTitle')}</h4>
-              <table className="w-full border-collapse">
-                <thead className="bg-gray-200">
-                  <tr>
-                    <th className="border-r border-gray-400 p-3 font-bold text-gray-800">{getTranslation(language, 'stt')}</th>
-                    <th className="border-r border-gray-400 p-3 font-bold text-gray-800">{getTranslation(language, 'formProducts')}</th>
-                    <th className="border-r border-gray-400 p-3 font-bold text-gray-800">{getTranslation(language, 'quantityTable')}</th>
-                    <th className="border-r border-gray-400 p-3 font-bold text-gray-800">{getTranslation(language, 'unitWeightTable')}</th>
+            <div className="border-2 border-gray-400 overflow-x-auto">
+              <h4 className="font-bold text-base lg:text-lg p-3 lg:p-4 text-gray-800 border-b-2 border-gray-400 bg-gray-100">
+                {getTranslation(language, 'productListTitle')}
+              </h4>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse min-w-[600px]">
+                  <thead className="bg-gray-200">
+                    <tr>
+                      <th className="border-r border-gray-400 p-2 lg:p-3 font-bold text-gray-800 text-sm lg:text-base">
+                        {getTranslation(language, 'stt')}
+                      </th>
+                      <th className="border-r border-gray-400 p-2 lg:p-3 font-bold text-gray-800 text-sm lg:text-base">
+                        {getTranslation(language, 'formProducts')}
+                      </th>
+                      <th className="border-r border-gray-400 p-2 lg:p-3 font-bold text-gray-800 text-sm lg:text-base">
+                        {getTranslation(language, 'quantityTable')}
+                      </th>
+                      <th className="border-r border-gray-400 p-2 lg:p-3 font-bold text-gray-800 text-sm lg:text-base">
+                        {getTranslation(language, 'unitWeightTable')}
+                      </th>
                     <th className="p-3 font-bold text-gray-800">{getTranslation(language, 'formTotalWeight')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {formItems.map((item, index) => (
                     <tr key={item.id} className="border-b border-gray-300">
-                      <td className="border-r border-gray-400 p-3 text-center font-medium">{index + 1}</td>
-                      <td className="border-r border-gray-400 p-3">{item.name || '-'}</td>
-                      <td className="border-r border-gray-400 p-3 text-center">{item.quantity}</td>
-                      <td className="border-r border-gray-400 p-3 text-center">{item.weight}</td>
-                      <td className="p-3 text-center font-medium">
+                      <td className="border-r border-gray-400 p-2 lg:p-3 text-center font-medium text-sm lg:text-base">
+                        {index + 1}
+                      </td>
+                      <td className="border-r border-gray-400 p-2 lg:p-3 text-sm lg:text-base">
+                        {item.name || '-'}
+                      </td>
+                      <td className="border-r border-gray-400 p-2 lg:p-3 text-center text-sm lg:text-base">
+                        {item.quantity}
+                      </td>
+                      <td className="border-r border-gray-400 p-2 lg:p-3 text-center text-sm lg:text-base">
+                        {item.weight}
+                      </td>
+                      <td className="p-2 lg:p-3 text-center font-medium text-sm lg:text-base">
                         {(item.quantity * item.weight).toFixed(2)}
                       </td>
                     </tr>
@@ -301,6 +324,7 @@ const NewForm: React.FC<NewFormProps> = ({ onFormSave, language }) => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

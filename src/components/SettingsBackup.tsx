@@ -185,30 +185,32 @@ const SettingsBackup: React.FC<SettingsBackupProps> = ({
   const totalItems = forms.length;
 
   return (
-    <div>
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">{getTranslation(language, 'settingsTitle')}</h2>
-      
+    <div className="mobile-optimized">
+      <h2 className="text-2xl lg:text-3xl font-bold mb-4 lg:mb-6 text-gray-800 px-2 lg:px-0">
+        {getTranslation(language, 'settingsTitle')}
+      </h2>
+
       {/* Data Overview */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h3 className="font-bold text-lg mb-4 flex items-center">
+      <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md mb-4 lg:mb-6">
+        <h3 className="font-bold text-base lg:text-lg mb-3 lg:mb-4 flex items-center">
           <FileText className="mr-2 text-blue-500" size={20} />
           {getTranslation(language, 'dataOverview')}
         </h3>
         <div className="grid grid-cols-1 gap-4">
           <div className="bg-purple-50 p-4 rounded-lg text-center">
-            <p className="text-2xl font-bold text-purple-600">{forms.length}</p>
+            <p className="text-xl lg:text-2xl font-bold text-purple-600">{forms.length}</p>
             <p className="text-sm text-gray-600">{getTranslation(language, 'formsCount')}</p>
           </div>
         </div>
       </div>
 
       {/* Data Backup */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h3 className="font-bold text-lg mb-4 flex items-center text-green-600">
+      <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md mb-4 lg:mb-6">
+        <h3 className="font-bold text-base lg:text-lg mb-3 lg:mb-4 flex items-center text-green-600">
           <Shield className="mr-2" size={20} />
           {getTranslation(language, 'dataBackup')}
         </h3>
-        <div className="bg-green-50 border border-green-200 p-4 rounded-lg mb-4">
+        <div className="bg-green-50 border border-green-200 p-3 lg:p-4 rounded-lg mb-3 lg:mb-4">
           <p className="text-sm text-green-800 mb-2">
             <strong>{getTranslation(language, 'backupRecommendation')}</strong>
           </p>
@@ -217,36 +219,38 @@ const SettingsBackup: React.FC<SettingsBackupProps> = ({
             {totalItems} {getTranslation(language, 'itemsWillBeBackedUp')}
           </p>
         </div>
-        <button
-          onClick={exportData}
-          className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors font-medium flex items-center"
-        >
-          <Download className="mr-2" size={16} />
-          {getTranslation(language, 'downloadBackup')}
-        </button>
-        <button
-          onClick={exportToExcel}
-          className="bg-emerald-500 text-white px-6 py-3 rounded-lg hover:bg-emerald-600 transition-colors font-medium flex items-center mt-3"
-        >
-          <FileSpreadsheet className="mr-2" size={16} />
-          {getTranslation(language, 'downloadExcel')}
-        </button>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button
+            onClick={exportData}
+            className="bg-green-500 text-white px-4 lg:px-6 py-3 rounded-lg hover:bg-green-600 transition-colors font-medium flex items-center justify-center flex-1"
+          >
+            <Download className="mr-2" size={16} />
+            {getTranslation(language, 'downloadBackup')}
+          </button>
+          <button
+            onClick={exportToExcel}
+            className="bg-emerald-500 text-white px-4 lg:px-6 py-3 rounded-lg hover:bg-emerald-600 transition-colors font-medium flex items-center justify-center flex-1"
+          >
+            <FileSpreadsheet className="mr-2" size={16} />
+            {getTranslation(language, 'downloadExcel')}
+          </button>
+        </div>
       </div>
 
       {/* Excel Export */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h3 className="font-bold text-lg mb-4 flex items-center text-emerald-600">
+      <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md mb-4 lg:mb-6">
+        <h3 className="font-bold text-base lg:text-lg mb-3 lg:mb-4 flex items-center text-emerald-600">
           <FileSpreadsheet className="mr-2" size={20} />
           {getTranslation(language, 'excelExportTitle')}
         </h3>
-        <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-lg mb-4">
+        <div className="bg-emerald-50 border border-emerald-200 p-3 lg:p-4 rounded-lg mb-3 lg:mb-4">
           <p className="text-sm text-emerald-800 mb-2">
             <strong>{getTranslation(language, 'excelDescription')}</strong>
           </p>
         </div>
         <button
           onClick={exportToExcel}
-          className="bg-emerald-500 text-white px-6 py-3 rounded-lg hover:bg-emerald-600 transition-colors font-medium flex items-center"
+          className="w-full bg-emerald-500 text-white px-4 lg:px-6 py-3 rounded-lg hover:bg-emerald-600 transition-colors font-medium flex items-center justify-center"
         >
           <FileSpreadsheet className="mr-2" size={16} />
           {getTranslation(language, 'downloadExcel')}
@@ -254,12 +258,12 @@ const SettingsBackup: React.FC<SettingsBackupProps> = ({
       </div>
 
       {/* Data Restore */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-        <h3 className="font-bold text-lg mb-4 flex items-center text-blue-600">
+      <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md mb-4 lg:mb-6">
+        <h3 className="font-bold text-base lg:text-lg mb-3 lg:mb-4 flex items-center text-blue-600">
           <Upload className="mr-2" size={20} />
           {getTranslation(language, 'dataRestore')}
         </h3>
-        <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg mb-4">
+        <div className="bg-yellow-50 border border-yellow-200 p-3 lg:p-4 rounded-lg mb-3 lg:mb-4">
           <div className="flex items-start">
             <AlertTriangle className="mr-2 text-yellow-600 flex-shrink-0 mt-0.5" size={16} />
             <div>
@@ -275,23 +279,23 @@ const SettingsBackup: React.FC<SettingsBackupProps> = ({
           type="file"
           onChange={importData}
           accept=".json"
-          className="block w-full text-sm text-gray-500 
-                    file:mr-4 file:py-2 file:px-4 
-                    file:rounded-lg file:border-0 
-                    file:text-sm file:font-semibold 
-                    file:bg-blue-50 file:text-blue-700 
-                    hover:file:bg-blue-100 
+          className="block w-full text-sm text-gray-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-lg file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-blue-50 file:text-blue-700
+                    hover:file:bg-blue-100
                     file:cursor-pointer cursor-pointer"
         />
       </div>
 
       {/* Danger Zone */}
-      <div className="bg-white p-6 rounded-lg shadow-md border-2 border-red-200">
-        <h3 className="font-bold text-lg mb-4 flex items-center text-red-600">
+      <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md border-2 border-red-200">
+        <h3 className="font-bold text-base lg:text-lg mb-3 lg:mb-4 flex items-center text-red-600">
           <AlertTriangle className="mr-2" size={20} />
           {getTranslation(language, 'dangerZone')}
         </h3>
-        <div className="bg-red-50 border border-red-200 p-4 rounded-lg mb-4">
+        <div className="bg-red-50 border border-red-200 p-3 lg:p-4 rounded-lg mb-3 lg:mb-4">
           <p className="text-sm text-red-800 font-medium mb-2">⚠️ {getTranslation(language, 'cannotUndo')}</p>
           <p className="text-sm text-gray-700">
             {getTranslation(language, 'deleteAllDescription')}
@@ -299,7 +303,7 @@ const SettingsBackup: React.FC<SettingsBackupProps> = ({
         </div>
         <button
           onClick={deleteAllData}
-          className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium flex items-center"
+          className="w-full bg-red-600 text-white px-4 lg:px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium flex items-center justify-center"
         >
           <Trash2 className="mr-2" size={16} />
           {getTranslation(language, 'deleteAllData')}

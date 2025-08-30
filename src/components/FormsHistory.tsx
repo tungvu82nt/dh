@@ -29,48 +29,64 @@ const FormsHistory: React.FC<FormsHistoryProps> = ({ forms, onFormsChange, langu
       ) : (
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
+            <table className="w-full border-collapse min-w-[800px]">
               <thead>
                 <tr className="bg-green-500 text-white">
-                  <th className="border-2 border-black p-3 text-center font-bold text-sm">{getTranslation(language, 'codeColumn')}</th>
-                  <th className="border-2 border-black p-3 text-center font-bold text-sm">{getTranslation(language, 'dateColumn')}</th>
-                  <th className="border-2 border-black p-3 text-center font-bold text-sm">{getTranslation(language, 'customerColumn')}</th>
-                  <th className="border-2 border-black p-3 text-center font-bold text-sm">{getTranslation(language, 'quantityColumn')}</th>
-                  <th className="border-2 border-black p-3 text-center font-bold text-sm">{getTranslation(language, 'weightColumn')}</th>
-                  <th className="border-2 border-black p-3 text-center font-bold text-sm">{getTranslation(language, 'totalWeightColumn')}</th>
-                  <th className="border-2 border-black p-3 text-center font-bold text-sm">{getTranslation(language, 'phoneColumn')}</th>
-                  <th className="border-2 border-black p-3 text-center font-bold text-sm">{getTranslation(language, 'addressColumn')}</th>
+                  <th className="border-2 border-black p-2 lg:p-3 text-center font-bold text-xs lg:text-sm">
+                    {getTranslation(language, 'codeColumn')}
+                  </th>
+                  <th className="border-2 border-black p-2 lg:p-3 text-center font-bold text-xs lg:text-sm">
+                    {getTranslation(language, 'dateColumn')}
+                  </th>
+                  <th className="border-2 border-black p-2 lg:p-3 text-center font-bold text-xs lg:text-sm">
+                    {getTranslation(language, 'customerColumn')}
+                  </th>
+                  <th className="border-2 border-black p-2 lg:p-3 text-center font-bold text-xs lg:text-sm">
+                    {getTranslation(language, 'quantityColumn')}
+                  </th>
+                  <th className="border-2 border-black p-2 lg:p-3 text-center font-bold text-xs lg:text-sm hidden md:table-cell">
+                    {getTranslation(language, 'weightColumn')}
+                  </th>
+                  <th className="border-2 border-black p-2 lg:p-3 text-center font-bold text-xs lg:text-sm">
+                    {getTranslation(language, 'totalWeightColumn')}
+                  </th>
+                  <th className="border-2 border-black p-2 lg:p-3 text-center font-bold text-xs lg:text-sm hidden sm:table-cell">
+                    {getTranslation(language, 'phoneColumn')}
+                  </th>
+                  <th className="border-2 border-black p-2 lg:p-3 text-center font-bold text-xs lg:text-sm">
+                    {getTranslation(language, 'addressColumn')}
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {forms.map((form) => (
                   <tr key={form.id} className="hover:bg-gray-50 transition-colors relative group">
-                    <td className="border border-black p-3 text-center text-sm font-mono">
+                    <td className="border border-black p-2 lg:p-3 text-center text-xs lg:text-sm font-mono">
                       {form.id.toString().slice(-6)}
                     </td>
-                    <td className="border border-black p-3 text-center text-sm">
+                    <td className="border border-black p-2 lg:p-3 text-center text-xs lg:text-sm">
                       {new Date(form.createdAt).toLocaleDateString(language === 'vi' ? 'vi-VN' : 'zh-CN')}
                     </td>
-                    <td className="border border-black p-3 text-center text-sm font-medium">
+                    <td className="border border-black p-2 lg:p-3 text-center text-xs lg:text-sm font-medium">
                       {form.customer.name}
                     </td>
-                    <td className="border border-black p-3 text-center text-sm">
+                    <td className="border border-black p-2 lg:p-3 text-center text-xs lg:text-sm">
                       {form.totalQuantity}
                     </td>
-                    <td className="border border-black p-3 text-center text-sm">
+                    <td className="border border-black p-2 lg:p-3 text-center text-xs lg:text-sm hidden md:table-cell">
                       {form.items.map((item) => (
                         <div key={item.id} className="text-xs mb-1 text-center">
-                          {item.name}: {item.quantity} x {item.weight} kilogram = {(item.quantity * item.weight).toFixed(2)} kilogram
+                          {item.name}: {item.quantity} x {item.weight}kg = {(item.quantity * item.weight).toFixed(2)}kg
                         </div>
                       ))}
                     </td>
-                    <td className="border border-black p-3 text-center text-sm font-bold text-blue-600">
-                      {form.totalWeight.toFixed(2)} kilogram
+                    <td className="border border-black p-2 lg:p-3 text-center text-xs lg:text-sm font-bold text-blue-600">
+                      {form.totalWeight.toFixed(2)}kg
                     </td>
-                    <td className="border border-black p-3 text-center text-sm">
+                    <td className="border border-black p-2 lg:p-3 text-center text-xs lg:text-sm hidden sm:table-cell">
                       {form.customer.phone || '-'}
                     </td>
-                    <td className="border border-black p-3 text-center text-sm relative">
+                    <td className="border border-black p-2 lg:p-3 text-center text-xs lg:text-sm relative">
                       {form.customer.address}
                       <button
                         onClick={() => deleteForm(form.id)}
