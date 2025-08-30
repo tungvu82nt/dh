@@ -53,6 +53,48 @@ Một ứng dụng web miễn phí, gọn nhẹ, giúp tạo phiếu gửi hàng
 
 *Badge này hiển thị trạng thái deployment real-time của dự án*
 
+## 📦 Repository
+
+**GitHub:** [https://github.com/tungvu82nt/dh](https://github.com/tungvu82nt/dh)
+
+**Live Demo:** [Sẽ có sau khi deploy Netlify](#deployment-guide)
+
+## 🚀 Deployment Guide
+
+### Netlify (Khuyên dùng)
+
+#### Bước 1: Truy cập Netlify
+1. Vào [https://netlify.com](https://netlify.com)
+2. Đăng nhập bằng GitHub
+
+#### Bước 2: Deploy từ GitHub
+1. Click **"Add new site"** → **"Import an existing project"**
+2. Chọn **"Deploy with GitHub"**
+3. Tìm repository `tungvu82nt/dh`
+4. Click **"Deploy site"**
+
+#### Bước 3: Cấu hình Build (Tự động)
+Netlify sẽ tự động phát hiện cấu hình từ file `netlify.toml`:
+```
+Build command: npm run build
+Publish directory: dist
+Node version: 18
+```
+
+#### Bước 4: Kết quả
+- ✅ **URL:** `https://[site-name].netlify.app`
+- ✅ **Build time:** ~2-3 phút
+- ✅ **Auto-deployment:** Tự động deploy khi push code
+
+### Vercel (Alternative)
+
+1. Import từ GitHub: `tungvu82nt/dh`
+2. Build Settings:
+   - Framework: **Vite**
+   - Root Directory: `./`
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+
 ## 🛠️ Công nghệ sử dụng
 
 **Frontend Framework:**
