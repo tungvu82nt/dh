@@ -9,6 +9,8 @@ interface SettingsBackupProps {
   onDataImport: (data: { forms: ShippingForm[] }) => void;
   onDataClear: () => void;
   language: Language;
+  loading?: boolean;
+  error?: string | null;
 }
 
 const SettingsBackup: React.FC<SettingsBackupProps> = ({
@@ -16,6 +18,8 @@ const SettingsBackup: React.FC<SettingsBackupProps> = ({
   onDataImport,
   onDataClear,
   language,
+  loading = false,
+  error = null,
 }) => {
   const exportData = () => {
     const dataToExport = {

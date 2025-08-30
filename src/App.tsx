@@ -5,7 +5,7 @@ import FormsHistory from './components/FormsHistory';
 
 import SettingsBackup from './components/SettingsBackup';
 import WelcomeModal from './components/WelcomeModal';
-import { useLocalStorage } from './hooks/useLocalStorage';
+import { useSupabaseShippingForms, useSupabaseUserSettings } from './hooks/useSupabase';
 import { useLanguage } from './hooks/useLanguage';
 import { ShippingForm, ViewType } from './types';
 
@@ -13,9 +13,19 @@ function App() {
   const [currentView, setCurrentView] = useState<ViewType>('new_form');
   const [showWelcome, setShowWelcome] = useState(false);
   const [language, setLanguage] = useLanguage();
-  
 
-  const [forms, setForms] = useLocalStorage<ShippingForm[]>('packsheet_forms', []);
+  // Use Supabase instead of localStorage
+  const {
+    forms,
+    loading: formsLoading,
+    error: formsError,
+    addForm,
+    deleteForm,
+    clearAllForms,
+    importForms
+  } = useSupabaseShippingForms();
+
+  const { settings, updateSettings } = useSupabaseUserSettings();
 
   // Show welcome modal for first-time users
   useEffect(() => {
@@ -26,18 +36,32 @@ function App() {
     }
   }, []);
 
-  const handleFormSave = (form: ShippingForm) => {
-    setForms([form, ...forms]);
+  const handleFormSave = async (form: ShippingForm) => {
+    try {
+      await addForm(form);
+    } catch (error) {
+      console.error('Failed to save form:', error);
+      alert('Lỗi khi lưu đơn hàng. Vui lòng thử lại.');
+    }
   };
 
-  const handleDataImport = (data: { forms: ShippingForm[] }) => {
-    setForms(data.forms);
-    setCurrentView('new_form');
+  const handleDataImport = async (data: { forms: ShippingForm[] }) => {
+    try {
+      await importForms(data.forms);
+      setCurrentView('new_form');
+    } catch (error) {
+      console.error('Failed to import forms:', error);
+      alert('Lỗi khi nhập dữ liệu. Vui lòng thử lại.');
+    }
   };
 
-  const handleDataClear = () => {
-    localStorage.removeItem('packsheet_forms');
-    setForms([]);
+  const handleDataClear = async () => {
+    try {
+      await clearAllForms();
+    } catch (error) {
+      console.error('Failed to clear forms:', error);
+      alert('Lỗi khi xóa dữ liệu. Vui lòng thử lại.');
+    }
   };
 
   const renderCurrentView = () => {
@@ -53,8 +77,10 @@ function App() {
         return (
           <FormsHistory
             forms={forms}
-            onFormsChange={setForms}
+            onFormDelete={deleteForm}
             language={language}
+            loading={formsLoading}
+            error={formsError}
           />
         );
 
@@ -65,6 +91,8 @@ function App() {
             onDataImport={handleDataImport}
             onDataClear={handleDataClear}
             language={language}
+            loading={formsLoading}
+            error={formsError}
           />
         );
       default:

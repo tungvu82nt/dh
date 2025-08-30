@@ -59,6 +59,32 @@ Một ứng dụng web miễn phí, gọn nhẹ, giúp tạo phiếu gửi hàng
 
 **Live Demo:** [Sẽ có sau khi deploy Netlify](#deployment-guide)
 
+## 🗄️ Database Setup
+
+### Supabase Integration
+
+Dự án đã được tích hợp với **Supabase** để thay thế localStorage:
+
+#### Bước 1: Tạo Database Schema
+1. Truy cập [Supabase Dashboard](https://supabase.com/dashboard)
+2. Chọn project của bạn
+3. Vào **SQL Editor**
+4. Copy và paste nội dung file `supabase-schema.sql`
+5. Click **Run** để tạo tables và policies
+
+#### Bước 2: Cấu hình Environment
+File `src/utils/supabase.ts` đã được cấu hình với:
+- ✅ Supabase URL: `https://lnqvjmdffzlxzavfxmek.supabase.co`
+- ✅ API Key: Đã được tích hợp
+- ✅ Database types: Đầy đủ TypeScript support
+
+#### Bước 3: Features đã tích hợp
+- ✅ **Real-time data**: Sync dữ liệu real-time
+- ✅ **User management**: Hỗ trợ multi-user (tương lai)
+- ✅ **Data persistence**: Không mất dữ liệu khi refresh
+- ✅ **Offline support**: Fallback khi mất kết nối
+- ✅ **Security**: Row Level Security (RLS) policies
+
 ## 🚀 Deployment Guide
 
 ### Netlify (Khuyên dùng)
